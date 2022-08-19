@@ -1,15 +1,21 @@
 package org.empty.gamemaker;
 
+import java.util.ArrayList;
+
 /**
  * <h1> Scene interface</h1>
  * <p> represents scene with some stuff in it </p>
  * <p> scene can store graphic objects and draw them on the screen</p>
  */
 
-public abstract class Scene {
+class Scene{
+    String name;
+    Engine engine;
 
-    public abstract void drawScene();
+    ArrayList<GraphicObject> objects;
 
-    public abstract void addGraphic(GraphicObject graphicObject, int x, int y);
-
+    Scene(String name, Engine engine){
+        this.name = name;
+        this.engine = engine;
+    }
 }
