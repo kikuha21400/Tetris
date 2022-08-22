@@ -10,4 +10,6 @@ public interface RenderEngine {
     void refresh();
 
     void close();
+
+    void clear();
 }

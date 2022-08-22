@@ -12,6 +12,7 @@ public class Engine {
     ArrayList<Scene> scenes;
 
     Boolean toClose;
+
     public Engine() {
         activeScene = null;
         scenes = new ArrayList<>();
@@ -20,8 +21,7 @@ public class Engine {
         toClose = false;
     }
 
-    public void addScene(String name){
-        Scene scene = new Scene(name, this);
+    public void addScene(Scene scene){
         scenes.add(scene);
     }
 
@@ -42,6 +42,7 @@ public class Engine {
             throw new NoActiveSceneException();
         }
 
+        getEngine().clear();
         for (GraphicObject object: activeScene.objects){
             renderEngine.render(object);
         }
@@ -55,4 +56,21 @@ public class Engine {
         renderEngine.close();
         toClose = true;
     }
+
+    public Scene getScene(String name){
+        for (Scene scene: scenes){
+            if (scene.name.equals(name)){
+                return scene;
+            }
+        }
+
+        return null;
+    }
+
+    public RenderEngine getEngine(){return renderEngine;}
+
+    public Scene getActiveScene(){
+        return activeScene;
+    }
+
 }
